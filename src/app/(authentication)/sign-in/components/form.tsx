@@ -14,14 +14,19 @@ type SignInModel = {
 export default function SignInForm() {
     return (
         <>
-            <Flex justify="center">
-                <Title>Xin chào!</Title>
-            </Flex>
-            <Flex justify="center">
-                <Text>Đăng nhập bằng Email</Text>
-            </Flex>
+            <div style={{
+                textAlign: "center",
+                fontSize: "2rem",
+                fontWeight: "700",
+                lineHeight: "2rem"
+            }}>Xin chào!</div>
+            <div style={{
+                textAlign: "center"
+            }}>Đăng nhập bằng Email</div>
 
-            <Flex justify="center">
+            <Flex justify="center" style={{
+                marginTop: "20px"
+            }}>
                 <Form
                     name="signin"
                     initialValues={{ remember: true }}

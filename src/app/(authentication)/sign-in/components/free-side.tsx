@@ -1,12 +1,16 @@
 import { Image } from "antd";
 import React from "react";
 
-export default function SiginInFreeSide(){
+export default function SiginInFreeSide() {
     return (
-        <Image alt="free-side" src="/assets/images/sign-in-free-side.jpg" className="w-100 h-100" preview={false}
-        style={{
-            borderTopLeftRadius: "10px",
-            borderBottomLeftRadius: "10px"
-        }}/>
+        <div style={{
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/assets/images/sign-in-free-side.jpg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover"
+        }}>
+        </div>
     )
 }

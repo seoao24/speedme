@@ -8,28 +8,26 @@ import ProjectInformation from "./components/ProjectInformation";
 import ProjectTask from "./components/ProjectTask";
 
 export default function ProjectScreen() {
-    const rowRef = useRef(null);
-    const [totalDisplayItem, setTotalDisplayItem] = useState(1);
-    const [projectItemWidth, setProjectItemWidth] = useState(200);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [visibleCount, setVisibleCount] = useState(7); //items.length)
 
     useEffect(() => {
-        if (!rowRef.current) return;
+        if (!containerRef.current) return;
 
-        const observer = new ResizeObserver((entries) => {
-            for (let entry of entries) {
-                const containerWidth = entry.contentRect.width;
-                const minItemWidth = 200;
+    const updateVisibleCount = () => {
+      const containerWidth = containerRef.current?.offsetWidth || 0;
+      const count = Math.floor(containerWidth / 200); // 200px là min width
+      setVisibleCount(count);
+    };
 
-                // Số item vừa container, không cần chia width
-                const itemsFit = Math.floor(containerWidth / minItemWidth) || 1;
+    updateVisibleCount();
 
-                // Chỉ update nếu khác state cũ
-                setTotalDisplayItem(prev => (prev !== itemsFit ? itemsFit : prev));
-            }
-        });
+    const observer = new ResizeObserver(updateVisibleCount);
+    observer.observe(containerRef.current);
 
-        observer.observe(rowRef.current);
-        return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
     }, []);
 
     return (
@@ -38,22 +36,22 @@ export default function ProjectScreen() {
             <hr style={{ margin: "3px 0", color: "#ECF0F6" }} />
             <ProjectQuote>
                 <div>Hello kitty</div>
-                <div>Width: {projectItemWidth}</div>
-                <div>Total: {totalDisplayItem}</div>
             </ProjectQuote>
             <hr style={{ margin: "3px 0", color: "#ECF0F6" }} />
             <Flex justify="space-between" style={{ width: "100%" }}>
                 <ProjectInformation />
-                <div ref={rowRef} >
+                <div ref={containerRef} >
                     <Row style={{
                         paddingLeft: "10px",
                         flexWrap: "nowrap",
                         overflow: "hidden"
                     }}
                     >
-                        {Array.from({ length: totalDisplayItem }).map((_, index) => (
+                        {Array.from({ length: visibleCount }).map((_, index) => (
                             <Col key={index}>
-                                <div style={{ width: projectItemWidth }}>
+                                <div style={{ 
+                                    width: "100%",
+                                    minWidth: "227px" }}>
                                     <ProjectTask id="1" />
                                 </div>
                             </Col>

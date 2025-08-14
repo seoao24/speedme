@@ -20,7 +20,7 @@ export default function ProjectInformationTaskList(props: ProjectInformationTask
     };
     return (
         <div>
-            <div>Danh sách nhiệm vụ</div>
+            <div>Danh sách nhiệm vụ {props.tasks.length}</div>
             {
                 props.tasks.map(e => (
                     <div key={e.id}>

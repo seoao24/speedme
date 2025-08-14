@@ -8,7 +8,7 @@ export default function ProjectDetailCard(props: ProjectDetailCardProps) {
     return (
         <div style={{
             border: "1px solid #A0A8BD",
-            padding: "0 10px"
+            padding: "0 10px",
         }}>
             {props.children}
         </div>

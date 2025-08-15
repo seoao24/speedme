@@ -17,7 +17,10 @@ export default function ProjectScreen() {
     const updateVisibleCount = () => {
       const containerWidth = containerRef.current?.offsetWidth || 0;
       const count = Math.floor(containerWidth / 200); // 200px là min width
-      setVisibleCount(count);
+      if(count > 7) setVisibleCount(7);
+      else {
+        setVisibleCount(count);
+      }
     };
 
     updateVisibleCount();
@@ -51,7 +54,7 @@ export default function ProjectScreen() {
                             <Col key={index}>
                                 <div style={{ 
                                     width: "100%",
-                                    minWidth: "227px" }}>
+                                    minWidth: "200px" }}>
                                     <ProjectTask id="1" />
                                 </div>
                             </Col>

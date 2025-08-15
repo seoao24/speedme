@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
 import ProjectDetailCard from "./ProjectDetailCard";
-import { Button, Flex, Form } from "antd";
+import { Button, Checkbox, Flex, Form, Input } from "antd";
+import styled from "styled-components";
+import TextArea from "antd/es/input/TextArea";
 
 type ProjectTaskProps = {
     id: string
@@ -29,7 +31,7 @@ export default function ProjectTask(props: ProjectTaskProps) {
                 </Button>
             </Flex>
             <Flex justify="space-between" style={{
-                backgroundColor: "#fff0f6", 
+                backgroundColor: "#fff0f6",
                 margin: "5px 0",
                 border: "1px solid #FEB0D8"
             }}>
@@ -43,7 +45,20 @@ export default function ProjectTask(props: ProjectTaskProps) {
                 margin: "10px 0"
             }}>Công việc</div>
             <Form>
-
+                <LinedPaper>
+                    <Flex justify="space-between"
+                    align="start"
+                    style={{
+                        width: "100%"
+                    }}>
+                        <Checkbox />
+                        <TextArea variant="borderless" style={{
+                            overflow: "hidden",
+                            width: "100%"
+                        }}
+                        autoSize={{ minRows: 1, maxRows: 5 }} />
+                    </Flex>
+                </LinedPaper>
             </Form>
         </ProjectDetailCard>
     )
@@ -69,3 +84,16 @@ const ProjectSummary = (props: ProjectSummaryProps) => {
         </div>
     )
 }
+
+const LinedPaper = styled.div`
+  background-image: repeating-linear-gradient(
+    to bottom,
+    white 0px,
+    white 23px,
+    #ccc 24px
+  );
+  background-size: 100% 24px;
+  padding: 25px 0;
+  font-family: Arial, sans-serif;
+  line-height: 24px;
+`;

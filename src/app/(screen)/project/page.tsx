@@ -54,7 +54,7 @@ export default function ProjectScreen() {
                             <Col key={index}>
                                 <div style={{ 
                                     width: "100%",
-                                    minWidth: "200px" }}>
+                                    minWidth: "228px" }}>
                                     <ProjectTask id="1" />
                                 </div>
                             </Col>

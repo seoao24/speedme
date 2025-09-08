@@ -4,6 +4,7 @@ import ProjectDetailCard from "./ProjectDetailCard";
 import { Button, Checkbox, Flex, Form, Input } from "antd";
 import styled from "styled-components";
 import TextArea from "antd/es/input/TextArea";
+import DoughnutChart from "@/components/chart/Doughnut";
 
 type ProjectTaskProps = {
     id: string
@@ -23,6 +24,15 @@ export default function ProjectTask(props: ProjectTaskProps) {
                 fontSize: "0.6rem",
                 margin: "5px 0"
             }}>Ngày 9 tháng 8 năm 2025</div>
+            <Flex justify="center">
+                <div style={{
+                    width: "100px",
+                    height: "100px",
+                    margin: "10px 0"
+                }}>
+                    <DoughnutChart/>
+                </div>
+            </Flex>
             <Flex justify="center">
                 <Button color="pink" variant="filled" style={{
                     width: "100%"
@@ -51,12 +61,16 @@ export default function ProjectTask(props: ProjectTaskProps) {
                     style={{
                         width: "100%"
                     }}>
-                        <Checkbox />
-                        <TextArea variant="borderless" style={{
+                        <Checkbox>
+                        {/* <TextArea variant="borderless" style={{
                             overflow: "hidden",
                             width: "100%"
                         }}
-                        autoSize={{ minRows: 1, maxRows: 5 }} />
+                        autoSize={{ minRows: 1, maxRows: 5 }} /> */}
+                        <div style={{
+                            marginLeft: "5px"
+                        }}>Đây là nhiệm vụ bất khả thi, tau đố mày làm được đấy hehe</div>
+                        </Checkbox>
                     </Flex>
                 </LinedPaper>
             </Form>
